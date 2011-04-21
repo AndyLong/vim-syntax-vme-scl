@@ -1,0 +1,104 @@
+Viml:   let s:value_start = '<!'
+Viml:   let s:value_end = '!>'
+Viml:   let s:fileencoding = 'utf-8'
+Viml:   let s:marker_open = '<+'
+Viml:   let s:marker_close = '+>'
+Viml: "
+@
+@   DECLARE STANDARD WHENEVER CONDITIONS
+@
+@@  WHENEVER  TRACE_DATA THEN
+@@      METERS                      := "Y"
+@@      DISPLAY                     := "Y"
+@@  FI
+
+    WHENEVER    PROGRESS NE "" THEN
+        UNLESS  MY_VERBOSITY LT COMMENT_LEVEL THEN
+            NR_MESSAGE(
+                PROCEDURE   = VAL NR_PROCEDURE_NAME,
+                MESSAGE     = PROGRESS,
+                RESPONSE    = IGNORE )
+        FI
+        COMMENT_LEVEL               := DEFAULT_COMMENT_LEVEL
+    FI
+
+    VALIDATION_MESSAGE              := "DUMMY" & "STRING"
+    VALIDATION_MESSAGE              := ""
+
+    WHENEVER    VALIDATION_ERROR THEN
+        VALIDATION_ERRORS           := VALIDATION_ERRORS + 1
+        UNLESS  MY_VERBOSITY LT VERB_ERRORS THEN
+            NR_MESSAGE(
+                PROCEDURE   = VAL NR_PROCEDURE_NAME,
+                MESSAGE     =
+                    "VALIDATION ERROR -" &
+                    VALIDATION_MESSAGE,
+                RESPONSE    = IGNORE )
+        FI
+    FI
+
+    WHENEVER    VALIDATION_WARNING THEN
+        UNLESS  MY_VERBOSITY LT VERB_WARNINGS THEN
+            NR_MESSAGE(
+                PROCEDURE   = VAL NR_PROCEDURE_NAME,
+                MESSAGE     =
+                    "VALIDATION WARNING -" &
+                    VALIDATION_MESSAGE,
+                RESPONSE    = IGNORE )
+        FI
+    FI
+
+    WHENEVER    CHK_FLAG GT 0 THEN
+        CHK_FLAG                    := -1 * CHK_FLAG
+    FI
+
+    WHENEVER    RESP NE 0 THEN
+        INT
+            SAVED_RESULT_CODE       := RESP
+
+        NR_SEND_RESULT_MESSAGE(
+            RESULT      = SAVED_RESULT_CODE,
+            PROCEDURE   = VAL NR_PROCEDURE_NAME,
+            CALLING     = VAL CALLING,
+            PROGRESS    = PROGRESS,
+            VERBOSITY   = MY_VERBOSITY )
+        IF  SAVED_RESULT_CODE GT 0 THEN
+            RETURN
+        FI
+    FI
+
+@@  WHENEVER    CALLING NE "" THEN
+@@      IF  TRACE_PATH THEN
+@@          UNLESS  TRACE_DATA THEN
+@@              INTERESTING_PARAMETERS  := ""
+@@          FI
+@@          NR_TRACE_PROCEDURE_CALL(
+@@              PROCEDURE   = VAL NR_PROCEDURE_NAME,
+@@              CALLED      = VAL CALLING,
+@@              PARAMETERS  = SVAL INTERESTING_PARAMETERS,
+@@              RESPONSE    = IGNORE )
+@@          INTERESTING_PARAMETERS  := ""
+@@          IF  TRACE_PERFORMANCE THEN
+@@              LIST_USAGE( BREAKDOWN, RESPONSE = IGNORE )
+@@          FI
+@@      FI
+@@  FI
+
+@@  WHENEVER    RETURNING NE "" THEN
+@@      IF  TRACE_PATH THEN
+@@          IF  TRACE_PERFORMANCE THEN
+@@              LIST_USAGE( BREAKDOWN, RESPONSE = IGNORE )
+@@          FI
+@@          UNLESS  TRACE_DATA THEN
+@@              INTERESTING_PARAMETERS  := ""
+@@          FI
+@@          NR_TRACE_PROCEDURE_RETURN(
+@@              PROCEDURE   = VAL NR_PROCEDURE_NAME,
+@@              CALLED      = VAL RETURNING,
+@@              PARAMETERS  = SVAL INTERESTING_PARAMETERS,
+@@              REPLY       = FLAG,
+@@              RESPONSE    = IGNORE )
+@@          INTERESTING_PARAMETERS  := ""
+@@      FI
+@@  FI
+

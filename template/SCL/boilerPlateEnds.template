@@ -1,0 +1,15 @@
+Viml:   let s:value_start = '<!'
+Viml:   let s:value_end = '!>'
+Viml:   let s:fileencoding = 'utf-8'
+Viml:   let s:marker_open = '<+'
+Viml:   let s:marker_close = '+>'
+Viml: "
+@
+@   END OF PROCEDURE
+@
+@@  IF  TRACE_PERFORMANCE THEN
+@@      LIST_USAGE( BREAKDOWN, RESPONSE = IGNORE )
+@@  FI
+
+    COMMENT_LEVEL                   := VERB_IDENTITY
+    PROGRESS                        := "ENDS OK"

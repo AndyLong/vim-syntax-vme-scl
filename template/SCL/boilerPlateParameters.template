@@ -1,0 +1,9 @@
+Viml:   let s:value_start = '<!'
+Viml:   let s:value_end = '!>'
+Viml:   let s:fileencoding = 'utf-8'
+Viml:   let s:marker_open = '<+'
+Viml:   let s:marker_close = '+>'
+Viml: "
+    SUPERSTRING     ( OPTIONS )     P_OPTIONS := "",
+    LITERAL         ( * )           COMPILED  := NR_STOC,
+    RESPONSE        ( RESPONSE )    RESP      := RESULT )

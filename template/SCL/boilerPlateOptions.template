@@ -1,0 +1,17 @@
+Viml:   let s:value_start = '<!'
+Viml:   let s:value_end = '!>'
+Viml:   let s:fileencoding = 'utf-8'
+Viml:   let s:marker_open = '<+'
+Viml:   let s:marker_close = '+>'
+Viml: "
+@
+@   PROCESS OPTIONAL PARAMETERS
+@
+    NR_OPTIONS_PROCESSING(
+        PROCEDURE   = VAL NR_PROCEDURE_NAME,
+        OPTIONS     = P_OPTIONS,
+        INTERESTING = "DIAGNOSTICS" & "VERBOSITY",
+        UON         =
+            ( NR_SUITE_NAME + "(OPTIONS)" ) &
+            ( NR_PROCEDURE_NAME + "(OPTIONS)" ),
+        RESPONSE    = IGNORE )

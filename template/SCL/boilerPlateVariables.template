@@ -1,0 +1,67 @@
+Viml:   let s:value_start = '<!'
+Viml:   let s:value_end = '!>'
+Viml:   let s:fileencoding = 'utf-8'
+Viml:   let s:marker_open = '<+'
+Viml:   let s:marker_close = '+>'
+Viml: "
+@
+@   DECLARE BOILERPLATE VARIABLES
+@
+    STRING
+        NR_PROCEDURE_NAME           IS
+            "<!toupper(expand('%:t:r'))!>",
+        NR_SUITE_NAME               IS
+            "NR_<!toupper(input('Suite Name? '))!>",
+        VERSION_NO                  IS
+            "[ Ver. " +
+            ( ( "$Revision: 1.2 $ " AFTER "Revision: " ) BEFORE " $" ) +
+            " - " +
+            ( ( ( COMPILED + " " ) AFTER " ON " ) BEFORE " " ) +
+            " " +
+            ( ( ( COMPILED + " " ) AFTER " AT " ) BEFORE " " ) +
+            " ]"
+
+    INT
+        DIAG_NONE                   IS 0,
+        DIAG_PATH                   IS 1,
+        DIAG_DATA                   IS 2,
+        DIAG_PERFORMANCE            IS 3,
+        DIAG_ALL                    IS 100,
+        VERB_NONE                   IS 0,
+        VERB_ERRORS                 IS 1,
+        VERB_WARNINGS               IS 2,
+        VERB_IDENTITY               IS 3,
+        VERB_COMMENTS               IS 4,
+        VERB_ALL                    IS 100
+
+    STRING ( 80 )
+        PROGRESS                    := ""
+
+    STRING ( 32 )
+        RETURNING                   := "",
+        CALLING                     := ""
+
+    STRING
+        METERS                      := "N",
+        DISPLAY                     := "N"
+
+    INT
+        MY_DIAGS                    := DIAG_NONE,
+        MY_VERBOSITY                := VERB_WARNINGS,
+        DEFAULT_COMMENT_LEVEL       := VERB_ALL,
+        COMMENT_LEVEL               := DEFAULT_COMMENT_LEVEL,
+        FLAG                        := 0,
+        CHK_FLAG                    := 0,
+        IGNORE                      := 0,
+        VALIDATION_ERRORS           := 0
+
+    BOOL
+        TRACE_DATA                  := FALSE,
+        TRACE_PATH                  := FALSE,
+        TRACE_PERFORMANCE           := FALSE,
+        VALIDATION_ERROR            := FALSE,
+        VALIDATION_WARNING          := FALSE
+@
+@   DECLARE AND INITIALISE PROGRAM VARIABLES
+@
+
