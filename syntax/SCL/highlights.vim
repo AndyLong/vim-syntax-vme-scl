@@ -1,23 +1,16 @@
 " VIM Syntax File
 " Language:	ICL/Fujitsu VME SCL programs
-" Maintainer:	Andy Long (AndrewGLong@Yahoo.com)
-" LastChange:	April 2004
+" Maintainer:	Andy Long (Andrew.Long@Yahoo.com)
+" LastChange:	$Date$
+" Version:      $Revision$
 " Remarks:	VME SCL is the System Control Language (JCL, to IBM-heads)
 " 		for the (formerly) ICL (now) Fujitsu mainframe VME systems.
 "
 "	$Log: reservedWords.vim,v $
-"	Revision 1.1.2.3  2011-03-17 08:15:07  0126792
-"	Fix problems with folding of assignments containing Comments.
-"	TODO: doesn't handle embedded blank lines correctly.
 "
-"	Fix problems with syntax highlighting of relational operators.
-"	TODO: Built-in procedures highlighting.
-"
-"	Fix highlighting for Pragmas.
-"
-" if exists("b:current_syntax")
-" 	finish
-" endif
+if exists("b:current_syntax")
+	finish
+endif
 
 if version >= 508 || !exists("did_c_syn_inits")
 	if version < 508

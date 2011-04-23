@@ -14,8 +14,8 @@ Viml: "
 
     WHENEVER    PROGRESS NE "" THEN
         UNLESS  MY_VERBOSITY LT COMMENT_LEVEL THEN
-            NR_MESSAGE(
-                PROCEDURE   = VAL NR_PROCEDURE_NAME,
+            <!sitePrefix()!>MESSAGE(
+                PROCEDURE   = VAL <!sitePrefix()!>PROCEDURE_NAME,
                 MESSAGE     = PROGRESS,
                 RESPONSE    = IGNORE )
         FI
@@ -28,22 +28,18 @@ Viml: "
     WHENEVER    VALIDATION_ERROR THEN
         VALIDATION_ERRORS           := VALIDATION_ERRORS + 1
         UNLESS  MY_VERBOSITY LT VERB_ERRORS THEN
-            NR_MESSAGE(
-                PROCEDURE   = VAL NR_PROCEDURE_NAME,
-                MESSAGE     =
-                    "VALIDATION ERROR -" &
-                    VALIDATION_MESSAGE,
+            <!sitePrefix()!>MESSAGE(
+                PROCEDURE   = VAL ( <!sitePrefix()!>PROCEDURE_NAME + " ERROR" ),
+                MESSAGE     = VALIDATION_MESSAGE,
                 RESPONSE    = IGNORE )
         FI
     FI
 
     WHENEVER    VALIDATION_WARNING THEN
         UNLESS  MY_VERBOSITY LT VERB_WARNINGS THEN
-            NR_MESSAGE(
-                PROCEDURE   = VAL NR_PROCEDURE_NAME,
-                MESSAGE     =
-                    "VALIDATION WARNING -" &
-                    VALIDATION_MESSAGE,
+            <!sitePrefix()!>MESSAGE(
+                PROCEDURE   = VAL ( <!sitePrefix()!>PROCEDURE_NAME + " WARNING" (,
+                MESSAGE     = VALIDATION_MESSAGE,
                 RESPONSE    = IGNORE )
         FI
     FI
@@ -56,9 +52,9 @@ Viml: "
         INT
             SAVED_RESULT_CODE       := RESP
 
-        NR_SEND_RESULT_MESSAGE(
+        <!sitePrefix()!>SEND_RESULT_MESSAGE(
             RESULT      = SAVED_RESULT_CODE,
-            PROCEDURE   = VAL NR_PROCEDURE_NAME,
+            PROCEDURE   = VAL <!sitePrefix()!>PROCEDURE_NAME,
             CALLING     = VAL CALLING,
             PROGRESS    = PROGRESS,
             VERBOSITY   = MY_VERBOSITY )
@@ -72,8 +68,8 @@ Viml: "
 @@          UNLESS  TRACE_DATA THEN
 @@              INTERESTING_PARAMETERS  := ""
 @@          FI
-@@          NR_TRACE_PROCEDURE_CALL(
-@@              PROCEDURE   = VAL NR_PROCEDURE_NAME,
+@@          <!sitePrefix()!>TRACE_PROCEDURE_CALL(
+@@              PROCEDURE   = VAL <!sitePrefix()!>PROCEDURE_NAME,
 @@              CALLED      = VAL CALLING,
 @@              PARAMETERS  = SVAL INTERESTING_PARAMETERS,
 @@              RESPONSE    = IGNORE )
@@ -92,8 +88,8 @@ Viml: "
 @@          UNLESS  TRACE_DATA THEN
 @@              INTERESTING_PARAMETERS  := ""
 @@          FI
-@@          NR_TRACE_PROCEDURE_RETURN(
-@@              PROCEDURE   = VAL NR_PROCEDURE_NAME,
+@@          <!sitePrefix()!>TRACE_PROCEDURE_RETURN(
+@@              PROCEDURE   = VAL <!sitePrefix()!>PROCEDURE_NAME,
 @@              CALLED      = VAL RETURNING,
 @@              PARAMETERS  = SVAL INTERESTING_PARAMETERS,
 @@              REPLY       = FLAG,

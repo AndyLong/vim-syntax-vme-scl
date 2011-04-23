@@ -5,7 +5,7 @@ Viml:   let s:marker_open = '<+'
 Viml:   let s:marker_close = '+>'
 Viml: "
 PROC <!toupper(expand("%:t:r"))!> ( ) IS (
-VIML: call s:Include( 'parameters', 'scl/boilerPlate' )
+VIML: call s:Include( 'boilerPlatePrameters', 'scl' )
 @
 @   Author:                         <!Author()!>
 @   Created:                        <!strftime('%c')!>
@@ -19,15 +19,12 @@ VIML: call s:Include( 'parameters', 'scl/boilerPlate' )
 @       <+description+>
 @
 @   $Log: scl.template,v $
-@   Revision 1.3  2009/11/14 10:41:04  0126792
-@   Edciting checkpoint during Holiday
-@
 @
 PROCBEGIN
-VIML: call s:Include( 'variables', 'scl/boilerPlate' )
-VIML: call s:Include( 'whenevers', 'scl/boilerPlate' )
-VIML: call s:Include( 'options', 'scl/boilerPlate' )
-VIML: call s:Include( 'starts', 'scl/boilerPlate' )
+VIML: call s:Include( 'boilerPlateVariables', 'scl' )
+VIML: call s:Include( 'boilerPlateWhenevers', 'scl' )
+VIML: call s:Include( 'boilerPlateOptions', 'scl' )
+VIML: call s:Include( 'boilerPlateStarts', 'scl' )
 
-VIML: call s:Include( 'ends', 'scl/boilerPlate' )
+VIML: call s:Include( 'boilerPlateEnds', 'scl' )
 PROCEND

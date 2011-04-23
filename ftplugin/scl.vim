@@ -8,39 +8,67 @@ endif
 
 let b:did_ftplugin=1
 
-setlocal softtabstop=4
-setlocal tabstop=4
+setlocal softtabstop=2
+setlocal tabstop=2
 setlocal expandtab
-setlocal shiftwidth=4
+setlocal shiftwidth=2
 setlocal foldcolumn=4
 setlocal foldmethod=syntax
 
 if !exists("b:scl_fold_parentheses")
-	let b:scl_fold_parentheses=0
+	if exists("g:scl_fold_parentheses")
+		let b:scl_fold_parentheses=g:scl_fold_parentheses
+	else
+		let b:scl_fold_parentheses=0
+	endif
 endif
 
 if !exists("b:scl_fold_declarations")
-	let b:scl_fold_declarations=0
+	if exists("g:scl_fold_declarations")
+		let b:scl_fold_declarations=g:scl_fold_declarations
+	else
+		let b:scl_fold_declarations=0
+	endif
 endif
 
 if !exists("b:scl_fold_assignments")
-	let b:scl_fold_assignments=0
+	if exists("g:scl_fold_assignments")
+		let b:scl_fold_assignments=g:scl_fold_assignments
+	else
+		let b:scl_fold_assignments=0
+	endif
 endif
 
 if !exists("b:scl_fold_body")
-	let b:scl_fold_body=0
+	if exists("g:scl_fold_body")
+		let b:scl_fold_body=g:scl_fold_body
+	else
+		let b:scl_fold_body=0
+	endif
 endif
 
 if !exists("b:scl_fold_blocks")
-	let b:scl_fold_blocks=1
+	if exists("g:scl_fold_blocks")
+		let b:scl_fold_blocks=g:scl_fold_blocks
+	else
+		let b:scl_fold_blocks=1
+	endif
 endif
 
 if !exists("b:scl_fold_loops")
-	let b:scl_fold_loops=1
+	if exists("g:scl_fold_loops")
+		let b:scl_fold_loops=g:scl_fold_loops
+	else
+		let b:scl_fold_loops=1
+	endif
 endif
 
 if !exists("b:scl_fold_conditionals")
-	let b:scl_fold_conditionals=1
+	if exists("g:scl_fold_conditionals")
+		let b:scl_fold_conditionals=g:scl_fold_conditionals
+	else
+		let b:scl_fold_conditionals=1
+	endif
 endif
 
 " Set 'formatoptions' to break comment lines but not other lines,

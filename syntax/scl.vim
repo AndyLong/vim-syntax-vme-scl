@@ -1,60 +1,17 @@
 " VIM Syntax File
 " Language:	ICL/Fujitsu VME SCL programs
-" Maintainer:	Andy Long (AndrewGLong@Yahoo.com)
-" LastChange:	$Date: 2011-03-17 08:15:01 $
+" Maintainer:	Andy Long (Andrew.Long@Yahoo.com)
+" LastChange:	$Date$
+" version: 	$Revision$
 " Remarks:	VME SCL is the System Control Language (JCL, to IBM-heads)
 " 		for the (formerly) ICL (now) Fujitsu mainframe VME systems.
 "
 "	$Log: scl.vim,v $
-"	Revision 2.2.4.5.2.5  2011-03-17 08:15:01  0126792
-"	Fix problems with folding of assignments containing Comments.
-"	TODO: doesn't handle embedded blank lines correctly.
 "
-"	Fix problems with syntax highlighting of relational operators.
-"	TODO: Built-in procedures highlighting.
-"
-"	Fix highlighting for Pragmas.
-"
-"
-"	Revision 2.2.4.5.2.4  2009/08/06 15:08:05  0126792
-"	Folding of all declarations seems to be OK
-"
-"	Revision 2.2.4.5.2.3  2009/08/05 09:06:02  0126792
-"	Odd discrpeancies. different behaviour between MacVim(Powerbook) and GVim(cygwin)
-"	Folding Assignments works Ok
-"	Folding declarations of STRING/SUPERSTRING with advisory length doesn't work
-"	in MacVim, but does (overworks!) on GVim
-"	Folding declarations of all other types seems to work OK
-"	
-"
-"if version<600
-"	syntax clear
-"elseif exists("b:current_syntax")
-"	finish
-"endif
-
-if !exists("b:scl_fold_parentheses")
-	let b:scl_fold_parentheses=1
-endif
-
-if !exists("b:scl_fold_body")
-	let b:scl_fold_body=1
-endif
-
-if !exists("b:scl_fold_blocks")
-	let b:scl_fold_blocks=1
-endif
-
-if !exists("b:scl_fold_declarations")
-	let b:scl_fold_declarations=1
-endif
-
-if !exists("b:scl_fold_loops")
-	let b:scl_fold_loops=1
-endif
-
-if !exists("b:scl_fold_conditionals")
-	let b:scl_fold_conditionals=1
+if version<600
+	syntax clear
+elseif exists("b:current_syntax")
+	finish
 endif
 
 syntax	case	ignore

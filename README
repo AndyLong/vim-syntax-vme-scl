@@ -1,0 +1,26 @@
+This collection of files creates a syntax recognition system for the System
+Control Language, running on the ICL/Fujitsu VME operating system. 
+
+The files in the 'template' folder are designed to be used with Luc Hermitte's
+version of Gergely Kontra's mu-template system.
+
+*** NOTE: These files are sill under development ***
+
+'foldmethod' is set to syntax, and you can select folding to be carried out on
+a number of different syntactic constructs:-
+
+1. Variable Declarations
+2. Variable Assignments
+3. Things in parentheses
+4. IF/UNLESS-THEN-ELSF-THEN-ELSE-FI
+5. WHENEVER-THEN-FI
+6. DO-REPEAT
+7. (PROC/MAC)BEGIN/END
+
+If you want to experiment with it, then a number of buffer-local variables drive
+the clauses that can be folded :-
+
+b:scl_fold_declarations, b:scl_fold_assignments, b:scl_fold_parentheses,
+b:scl_fold_body, b:scl_fold_blocks, b:scl_fold_loops & b:scl_fold_conditionals
+
+which will inherit value from global variables of the same name, if set.

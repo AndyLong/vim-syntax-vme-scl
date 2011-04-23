@@ -7,11 +7,11 @@ Viml: "
 @
 @   PROCESS OPTIONAL PARAMETERS
 @
-    NR_OPTIONS_PROCESSING(
-        PROCEDURE   = VAL NR_PROCEDURE_NAME,
+    <!sitePrefix()!>OPTIONS_PROCESSING(
+        PROCEDURE   = VAL <!sitePrefix()!>PROCEDURE_NAME,
         OPTIONS     = P_OPTIONS,
         INTERESTING = "DIAGNOSTICS" & "VERBOSITY",
         UON         =
-            ( NR_SUITE_NAME + "(OPTIONS)" ) &
-            ( NR_PROCEDURE_NAME + "(OPTIONS)" ),
+            ( <!sitePrefix()!>SUITE_NAME + "(OPTIONS)" ) &
+            ( <!sitePrefix()!>PROCEDURE_NAME + "(OPTIONS)" ),
         RESPONSE    = IGNORE )
