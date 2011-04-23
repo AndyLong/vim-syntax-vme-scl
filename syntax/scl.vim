@@ -441,6 +441,6 @@ syntax	cluster	sclAlwaysvalid	contains=sclComment,sclError
 "
 "	Noe assign all this to highlighting groups
 "
-runtime	syntax/scl/highlights.vim
+runtime	syntax/SCL/highlights.vim
 
 let b:current_syntax = "scl"
