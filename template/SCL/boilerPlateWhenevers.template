@@ -38,7 +38,7 @@ Viml: "
     WHENEVER    VALIDATION_WARNING THEN
         UNLESS  MY_VERBOSITY LT VERB_WARNINGS THEN
             <!SitePrefix()!>MESSAGE(
-                PROCEDURE   = VAL ( <!SitePrefix()!>PROCEDURE_NAME + " WARNING" (,
+                PROCEDURE   = VAL ( <!SitePrefix()!>PROCEDURE_NAME + " WARNING" ),
                 MESSAGE     = VALIDATION_MESSAGE,
                 RESPONSE    = IGNORE )
         FI
