@@ -66,7 +66,7 @@ syntax	keyword	sclTodo containedin=sclComment
 "
 "	read the reserved words in the language 
 "
-runtime	syntax/scl/reservedWords.vim
+runtime	syntax/SCL/reservedWords.vim
 "
 "	Now start building syntactic constructs from them
 "
