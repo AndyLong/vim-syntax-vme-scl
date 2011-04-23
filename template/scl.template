@@ -5,7 +5,7 @@ Viml:   let s:marker_open = '<+'
 Viml:   let s:marker_close = '+>'
 Viml: "
 PROC <!toupper(expand("%:t:r"))!> ( ) IS (
-VIML: call s:Include( 'boilerPlatePrameters', 'scl' )
+VIML: call s:Include( 'boilerPlatePrameters', 'SCL' )
 @
 @   Author:                         <!Author()!>
 @   Created:                        <!strftime('%c')!>
@@ -21,10 +21,10 @@ VIML: call s:Include( 'boilerPlatePrameters', 'scl' )
 @   $Log: scl.template,v $
 @
 PROCBEGIN
-VIML: call s:Include( 'boilerPlateVariables', 'scl' )
-VIML: call s:Include( 'boilerPlateWhenevers', 'scl' )
-VIML: call s:Include( 'boilerPlateOptions', 'scl' )
-VIML: call s:Include( 'boilerPlateStarts', 'scl' )
+VIML: call s:Include( 'boilerPlateVariables', 'SCL' )
+VIML: call s:Include( 'boilerPlateWhenevers', 'SCL' )
+VIML: call s:Include( 'boilerPlateOptions', 'SCL' )
+VIML: call s:Include( 'boilerPlateStarts', 'SCL' )
 
-VIML: call s:Include( 'boilerPlateEnds', 'scl' )
+VIML: call s:Include( 'boilerPlateEnds', 'SCL' )
 PROCEND
