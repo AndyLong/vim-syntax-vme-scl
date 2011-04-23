@@ -5,5 +5,5 @@ Viml:   let s:marker_open = '<+'
 Viml:   let s:marker_close = '+>'
 Viml: "
     SUPERSTRING     ( OPTIONS )     P_OPTIONS := "",
-    LITERAL         ( * )           COMPILED  := <!sitePrefix()!>STOC,
+    LITERAL         ( * )           COMPILED  := <!SitePrefix()!>STOC,
     RESPONSE        ( RESPONSE )    RESP      := RESULT )

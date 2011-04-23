@@ -8,10 +8,10 @@ Viml: "
 @   DECLARE BOILERPLATE VARIABLES
 @
     STRING
-        <!sitePrefix()!>PROCEDURE_NAME           IS
+        <!SitePrefix()!>PROCEDURE_NAME           IS
             "<!toupper(expand('%:t:r'))!>",
-        <!sitePrefix()!>SUITE_NAME               IS
-            "<!sitePrefix()!><!toupper(input('Suite Name? '))!>",
+        <!SitePrefix()!>SUITE_NAME               IS
+            "<!SitePrefix()!><!toupper(input('Suite Name? '))!>",
         VERSION_NO                  IS
             "[ Ver. " +
             ( ( "$Revision$ " AFTER "Revision: " ) BEFORE " $" ) +
