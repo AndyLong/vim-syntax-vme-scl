@@ -37,6 +37,7 @@ if version >= 508 || !exists("did_c_syn_inits")
 	HiLink	sclStringConst	String
 
 	HiLink	sclType		Type
+	HiLink	sclPDef		Type
 	HiLink	sclProc		Type
 	HiLink	sclMacro	Type
 	HiLink	sclInt		Type

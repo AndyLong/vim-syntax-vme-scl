@@ -187,8 +187,10 @@ syntax	match	sclParameterAlias	extend contains=sclParens,sclIdentifier,
 syntax	match	sclBoolean
 	\	/\<\(true\>\|\<false\)\>/
 
+syntax	match	sclPDef
+	\	/\<\(spdx\|spdnull\|spdi\|spdt\|spdw\|spdb\|spdli\|spdlw\|spdri\|spdrli\|spdrw\|spdrlw\|spdrvb\|spdrvbw\|spdrvi\|spdrvw\|spdrvlw\|spdrt\|spdrb\|spdrvrvb\|spd[1-8]b\|spdr[1-8]b\)\>/
 syntax	match	sclType
-	\	/\<\(bool\|int\|literal\|superliteral\|proc\|response\|\<string\>\|\<superstring\)\>/
+	\	/\<\(bool\|int\|literal\|superliteral\|proc\|response\|string\|superstring\|spdx\|spdnull\|spdi\|spdt\|spdw\|spdb\|spdli\|spdlw\|spdri\|spdrli\|spdrw\|spdrlw\|spdrvb\|spdrvbw\|spdrvi\|spdrvw\|spdrvlw\|spdrt\|spdrb\|spdrvrvb\|spd[1-8]b\|spdr[1-8]b\)\>/
 
 syntax	region	sclActualParameters	fold keepend contains=sclComment,
 	\		@sclActualParameter
@@ -197,13 +199,11 @@ syntax	region	sclActualParameters	fold keepend contains=sclComment,
 	\	matchgroup=sclParens
 	\	end=/[])}]/
 
-syntax	region	sclFormalParameters	fold keepend skipwhite skipempty 
-	\		nextgroup=sclType contains=sclFormalParameter,
+syntax	region	sclFormalParameters	fold keepend
+	\		contains=sclPArens,sclFormalParameter,sclIs,sclInt,sclBool,sclString,sclSString,
 	\		@sclAlwaysValid
-	\	matchgroup=sclParens
-	\	start=/[[({]/
-	\	matchgroup=sclParens
-	\	end=/[)}\]]/
+	\	start=/\<is\>\s*[[({]/
+	\	end=/[])}]\(\s*\a\k*\>\)\=/
 
 syntax	region	sclAnonymousParameter	keepend contained contains=@sclExpr,
 	\		sclComment
@@ -221,18 +221,20 @@ syntax	region	sclNamedParameter keepend contained contains=sclIdentifier,
 
 syntax	region	sclFormalParameter keepend contains=sclType,sclRef,sclIdentifier,
 	\		sclParameterAlias,sclAssignOp,@sclExpr,@sclAlwaysValid
+	\	matchgroup=sclType
 	\	start=/\<\(literal\|superliteral\|response\)\>/
+	\	matchgroup=sclType
 	\	start=/\<\(ref\s*\)\=\(int\|bool\|string\|superstring\)\>/
+	\	matchgroup=sclPDef
+	\	start=/\<\(spdx\|spdnull\|spdi\|spdt\|spdw\|spdb\|spdli\|spdlw\|spdri\|spdrli\|spdrw\|spdrlw\|spdrvb\|spdrvbw\|spdrvi\|spdrvw\|spdrvlw\|spdrt\|spdrb\|spdrvrvb\|spd[1-8]b\|spdr[1-8]b\)\>/
 	\	matchgroup=sclComma 
 	\	end=/,/
+	\	matchgroup=sclParens
+	\	end=/)/
 
-" syntax	match	sclProcDeclaration	contains=sclType skipwhite skipempty 
-" 	\	nextgroup=sclIdentifier
-" 	\	/\<proc\>/
-syntax	match	sclProcDeclaration	skipwhite skipempty 
-	\	nextgroup=sclFormalParameters
-	\	contains=sclType,sclIdentifier,sclPragma,sclIs,@sclAlwaysValid
-	\	/\<proc\>\s\+\a\k*\s*\((\_.\{-})\)\=\s*\<is\>\ze/
+syntax	region	sclProcDeclaration	keepend contains=sclType,sclIdentifier,sclPragma,sclFormalParameters,@sclAlwaysValid
+	\	start=/\<proc\>\s\+\a\k*\s*\((\_.\{-})\)\=\s*\<is\>\s*[[({]/
+	\	end=/[])}]\(\s*\a\k*\>\)\=/
 
 syntax	region	sclBoolDeclaration	fold keepend extend contains=sclType,
 	\		sclBoolAssignment,sclIdentifier,sclComment,sclComma,
