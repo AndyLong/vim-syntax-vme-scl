@@ -30,7 +30,7 @@ let s:sclKeyWords={
 	\	'ArithOp': [ 'count', 'bound', 'length' ],
 	\	'StringOp': [ 'and', 'or', 'neq', 'after', 'before', 'val', 'endswith', 'startswith', 'includes', 'eq', 'ne', 'lt', 'le', 'gt', 'ge' ],
 	\	'SStringOp': [ 'sval' ],
-	\	'Function': [ 'bin', 'chartoint', 'clock', 'digits', 'fill', 'find', 'hex', 'hextochar', 'index', 'numeric', 'status', 'stint', 'substr' ],
+	\	'Bip': [ 'bin', 'chartoint', 'clock', 'digits', 'fill', 'find', 'hex', 'hextochar', 'index', 'numeric', 'status', 'stint', 'substr' ],
 	\	'Statement': [ '\%(proc\|mac\)\=\%(begin\|end\)',  'goto',  'enter', 'syscall', 'return' ],
 	\	'Repeat': [ 'for', 'from', 'by', 'to', 'while', 'until', 'do', 'repeat' ],
 	\	'Conditional': [ 'if', 'unless', 'then', 'elsf', 'else', 'fi' ],
@@ -148,7 +148,7 @@ syntax	region	sclParen	fold keepend extend contains=@sclExpr,@sclAlwaysValid
 	\	matchgroup=sclParens
 	\	start=/[[({]/ end=/[])}]/
 
-syntax	region	sclProcedureCall	keepend extend contains=sclFunction,
+syntax	region	sclProcedureCall	keepend extend contains=sclBip,
 	\	sclIdentifier,sclActualParameters,@sclAlwaysValid
 	\	start=/\<\a\k*\>\ze\s*[[({]/
 	\	end=/[])}]\zs/
@@ -171,11 +171,11 @@ syntax	region	sclIntAssignment	fold keepend extend contains=sclIdentifier,
 	\	start=/\<\a\k*\>\s*\ze:\==\_s*/
 	\	skip=/\(:\==\|\*\|\/\|-\|+\|\<and\>\|\<or\>\)\_s*/
 	\	end=/\ze,/ end=/\ze;/ end=/$/
-syntax	region	sclIntAssignment	fold keepend extend 
-	\	contains=sclProcedureCall,sclAssignOp,@sclIntExpr,@sclAlwaysValid
-	\	start=/\<\a\k*\>\s*[[({]\_.\{-}[])}]\s*\ze:\==\_s*/
-	\	skip=/\(:\==\|\*\|\/\|-\|+\|\<and\>\|\<or\>\)\_s*/
-	\	end=/\ze,/ end=/\ze;/ end=/$/
+" syntax	region	sclIntAssignment	fold keepend extend 
+" 	\	contains=sclProcedureCall,sclAssignOp,@sclIntExpr,@sclAlwaysValid
+" 	\	start=/\<\a\k*\>\s*[[({]\_.\{-}[])}]\s*\ze:\==\_s*/
+" 	\	skip=/\(:\==\|\*\|\/\|-\|+\|\<and\>\|\<or\>\)\_s*/
+" 	\	end=/\ze,/ end=/\ze;/ end=/$/
 
 syntax	region	sclBoolAssignment	fold keepend extend contains=sclIdentifier,
 	\		sclAssignOp,@sclBoolExpr,@sclAlwaysValid
@@ -187,11 +187,11 @@ syntax	region	sclBoolAssignment	fold keepend extend contains=sclIdentifier,
 	\	start=/\<\a\k*\>\s*\ze:\==\_s*/
 	\	skip=/\(:\==\|\<and\>\|\<or\>\)\_s*/
 	\	end=/\ze,/ end=/\ze;/ end=/$/
-syntax	region	sclBoolAssignment	fold keepend extend 
-	\	contains=sclProcedureCall,sclAssignOp,@sclBoolExpr,@sclAlwaysValid
-	\	start=/\<\a\k*\>\s*[[({]\_.\{-}[])}]\s*\ze:\==\_s*/
-	\	skip=/\(:\==\|\<and\>\|\<or\>\)\_s*/
-	\	end=/\ze,/ end=/\ze;/ end=/$/
+" syntax	region	sclBoolAssignment	fold keepend extend 
+" 	\	contains=sclProcedureCall,sclAssignOp,@sclBoolExpr,@sclAlwaysValid
+" 	\	start=/\<\a\k*\>\s*[[({]\_.\{-}[])}]\s*\ze:\==\_s*/
+" 	\	skip=/\(:\==\|\<and\>\|\<or\>\)\_s*/
+" 	\	end=/\ze,/ end=/\ze;/ end=/$/
 
 syntax	region	sclSStringAssignment	fold keepend extend contains=sclIdentifier,
 	\		sclAssignOp,@sclSStringExpr,@sclAlwaysValid
@@ -214,17 +214,17 @@ syntax	region	sclStringAssignment	fold keepend extend contains=sclIdentifier,
 	\	start=/\<\a\k*\>\s*\ze:\==\_s*/
 	\	skip=/\(:\==\|+\|-\|\<and\>\|\<or\>\|\<after\|\<before\>\)\_s*/
 	\	end=/\ze,/ end=/\ze;/ end=/$/
-syntax	region	sclStringAssignment	fold keepend extend 
-	\	contains=sclProcedureCall,sclAssignOp,@sclStringExpr,
-	\		@sclAlwaysValid
-	\	start=/\<\a\k*\>\s*[[({]\_.\{-}[])}]\s*\ze:\==\_s*/
-	\	skip=/\(:\==\|+\|-\|\<and\>\|\<or\>\|\<after\|\<before\>\)\_s*/
-	\	end=/\ze,/ end=/\ze;/ end=/$/
-syntax	region	sclStringAssignment	fold keepend extend 
-	\	contains=sclProcedureCall,sclAssignOp,@sclStringExpr,@sclAlwaysValid
-	\	start=/\<substr\>\s*[[({]\_.\{-}[])}]\s*\ze:\==\_s*/
-	\	skip=/\(:\==\|+\|-\|\<and\>\|\<or\>\|\<after\|\<before\>\)\_s*/
-	\	end=/\ze,/ end=/\ze;/ end=/$/
+" syntax	region	sclStringAssignment	fold keepend extend 
+" 	\	contains=sclProcedureCall,sclAssignOp,@sclStringExpr,
+" 	\		@sclAlwaysValid
+" 	\	start=/\<\a\k*\>\s*[[({]\_.\{-}[])}]\s*\ze:\==\_s*/
+" 	\	skip=/\(:\==\|+\|-\|\<and\>\|\<or\>\|\<after\|\<before\>\)\_s*/
+" 	\	end=/\ze,/ end=/\ze;/ end=/$/
+" syntax	region	sclStringAssignment	fold keepend extend 
+" 	\	contains=sclProcedureCall,sclAssignOp,@sclStringExpr,@sclAlwaysValid
+" 	\	start=/\<substr\>\s*[[({]\_.\{-}[])}]\s*\ze:\==\_s*/
+" 	\	skip=/\(:\==\|+\|-\|\<and\>\|\<or\>\|\<after\|\<before\>\)\_s*/
+" 	\	end=/\ze,/ end=/\ze;/ end=/$/
 
 syntax	region	sclAnonAssignment	fold keepend extend contains=sclIdentifier,
 	\		sclAssignOp,@sclExpr,@sclAlwaysValid
@@ -242,8 +242,7 @@ syntax	region	sclAnonAssignment	fold keepend extend
 	\	skip=/\(:\==\|+\|-\|\*\|\/\|\<and\>\|\<or\>\|\<after\|\<before\>\|&\)\_s*/
 	\	end=/\ze,/ end=/\ze;/ end=/$/
 
-syntax	region	sclStringAdvisoryLength	keepend extend contains=@sclIntExpr,
-	\		sclComment,sclError
+syntax	region	sclStringAdvisoryLength	keepend extend contains=@sclIntExpr,sclAlwaysValid
 	\	matchgroup=sclParens
 	\	start=/(/
 	\	matchgroup=sclParens
@@ -554,7 +553,7 @@ if version >= 508 || !exists("did_c_syn_inits")
 	HiLink	sclStringOp	Operator
 	HiLink	sclSStringOp	Operator
 
-	HiLink	sclFunction	Function
+	HiLink	sclBip		Statement
 
 	HiLink	sclStatement	Statement
 
