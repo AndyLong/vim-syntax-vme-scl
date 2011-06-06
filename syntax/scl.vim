@@ -207,11 +207,6 @@ syntax	region	sclStringAssignment	fold keepend extend contains=sclIdentifier,
 
 syntax	region	sclAnonAssignment	fold keepend extend contains=sclIdentifier,
 	\		sclAssignOp,@sclExpr,@sclAlwaysValid
-	\	start=/\<\a\k*\>\s*\<is\>\_s*/
-	\	skip=/\(\<is\>\|+\|-\|\*\|\/\|\<and\>\|\<or\>\|\<after\|\<before\>\|&\)\_s*/
-	\	end=/\ze,/ end=/\ze;/ end=/$/
-syntax	region	sclAnonAssignment	fold keepend extend contains=sclIdentifier,
-	\		sclAssignOp,@sclExpr,@sclAlwaysValid
 	\	start=/\<\a\k*\>\s*:\==\_s*/
 	\	skip=/\(:\==\|+\|-\|\*\|\/\|\<and\>\|\<or\>\|\<after\|\<before\>\|&\)\_s*/
 	\	end=/\ze,/ end=/\ze;/ end=/$/
@@ -306,16 +301,14 @@ syntax	region	sclProcDeclaration	keepend containedin=NONE contains=sclType,sclId
 	\	end=/[])}]\(\s*\a\k*\>\)\=/
 
 syntax	region	sclBoolDeclaration	fold keepend extend contains=sclType,
-	\		sclBoolAssignment,sclIdentifier,sclComment,sclComma,
-	\		@sclAlwaysValid
+	\		sclBoolAssignment,sclIdentifier,sclComma,@sclAlwaysValid
 	\	start=/\ze\<bool\>/
 	\	skip=/\(\<bool\>\|,\)\_s*/
 	\	matchgroup=sclSemiColon
 	\	end=/;/ end=/$/
 
 syntax	region	sclIntDeclaration	fold keepend extend contains=sclType,
-	\		sclIntAssignment,sclIdentifier,sclComment,sclComma,
-	\	@sclAlwaysValid
+	\		sclIntAssignment,sclIdentifier,sclComma,@sclAlwaysValid
 	\	start=/\ze\<int\>/
 	\	skip=/\(\<int\>\|,\)\_s*/
 	\	matchgroup=sclSemiColon
