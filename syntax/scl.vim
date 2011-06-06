@@ -163,82 +163,61 @@ syntax	match	sclSStringOp	contained
 
 syntax	region	sclIntAssignment	fold keepend extend contains=sclIdentifier,
 	\		sclAssignOp,@sclIntExpr,@sclAlwaysValid
-	\	start=/\<\a\k*\>\s*\ze\<is\>\_s*/
+	\	start=/\<\a\k*\>\s*\<is\>\_s*/
 	\	skip=/\(\<is\>\|\*\|\/\|-\|+\|\<and\>\|\<or\>\)\_s*/
 	\	end=/\ze,/ end=/\ze;/ end=/$/
 syntax	region	sclIntAssignment	fold keepend extend contains=sclIdentifier,
 	\		sclAssignOp,@sclIntExpr,@sclAlwaysValid
-	\	start=/\<\a\k*\>\s*\ze:\==\_s*/
+	\	start=/\<\a\k*\>\s*:\==\_s*/
 	\	skip=/\(:\==\|\*\|\/\|-\|+\|\<and\>\|\<or\>\)\_s*/
 	\	end=/\ze,/ end=/\ze;/ end=/$/
-" syntax	region	sclIntAssignment	fold keepend extend 
-" 	\	contains=sclProcedureCall,sclAssignOp,@sclIntExpr,@sclAlwaysValid
-" 	\	start=/\<\a\k*\>\s*[[({]\_.\{-}[])}]\s*\ze:\==\_s*/
-" 	\	skip=/\(:\==\|\*\|\/\|-\|+\|\<and\>\|\<or\>\)\_s*/
-" 	\	end=/\ze,/ end=/\ze;/ end=/$/
 
 syntax	region	sclBoolAssignment	fold keepend extend contains=sclIdentifier,
 	\		sclAssignOp,@sclBoolExpr,@sclAlwaysValid
-	\	start=/\<\a\k*\>\s*\ze\<is\>\_s*/
+	\	start=/\<\a\k*\>\s*\<is\>\_s*/
 	\	skip=/\(\<is\>\|\<and\>\|\<or\>\)\_s*/
 	\	end=/\ze,/ end=/\ze;/ end=/$/
 syntax	region	sclBoolAssignment	fold keepend extend contains=sclIdentifier,
 	\		sclAssignOp,@sclBoolExpr,@sclAlwaysValid
-	\	start=/\<\a\k*\>\s*\ze:\==\_s*/
+	\	start=/\<\a\k*\>\s*:\==\_s*/
 	\	skip=/\(:\==\|\<and\>\|\<or\>\)\_s*/
 	\	end=/\ze,/ end=/\ze;/ end=/$/
-" syntax	region	sclBoolAssignment	fold keepend extend 
-" 	\	contains=sclProcedureCall,sclAssignOp,@sclBoolExpr,@sclAlwaysValid
-" 	\	start=/\<\a\k*\>\s*[[({]\_.\{-}[])}]\s*\ze:\==\_s*/
-" 	\	skip=/\(:\==\|\<and\>\|\<or\>\)\_s*/
-" 	\	end=/\ze,/ end=/\ze;/ end=/$/
 
 syntax	region	sclSStringAssignment	fold keepend extend contains=sclIdentifier,
 	\		sclAssignOp,@sclSStringExpr,@sclAlwaysValid
-	\	start=/\<\a\k*\>\s*\ze\<is\>\_s*/
+	\	start=/\<\a\k*\>\s*\<is\>\_s*/
 	\	skip=/\(&\|\<is\>\|+\|-\|\<and\>\|\<or\>\|\<after\|\<before\>\)\_s*/
 	\	end=/\ze,/ end=/\ze;/ end=/$/
 syntax	region	sclSStringAssignment	fold keepend extend contains=sclIdentifier,
 	\		sclAssignOp,@sclSStringExpr,@sclAlwaysValid
-	\	start=/\<\a\k*\>\s*\ze:\==\_s*/
+	\	start=/\<\a\k*\>\s*:\==\_s*/
 	\	skip=/\(&\|:\==\|+\|-\|\<and\>\|\<or\>\|\<after\|\<before\>\)\_s*/
 	\	end=/\ze,/ end=/\ze;/ end=/$/
 
 syntax	region	sclStringAssignment	fold keepend extend contains=sclIdentifier,
 	\		sclAssignOp,@sclStringExpr,@sclAlwaysValid
-	\	start=/\<\a\k*\>\s*\ze\<is\>\_s*/
+	\	start=/\<\a\k*\>\s*\<is\>\_s*/
 	\	skip=/\(\<is\>\|+\|-\|\<and\>\|\<or\>\|\<after\|\<before\>\)\_s*/
 	\	end=/\ze,/ end=/\ze;/ end=/$/
 syntax	region	sclStringAssignment	fold keepend extend contains=sclIdentifier,
 	\		sclAssignOp,@sclStringExpr,@sclAlwaysValid
-	\	start=/\<\a\k*\>\s*\ze:\==\_s*/
+	\	start=/\<\a\k*\>\s*:\==\_s*/
 	\	skip=/\(:\==\|+\|-\|\<and\>\|\<or\>\|\<after\|\<before\>\)\_s*/
 	\	end=/\ze,/ end=/\ze;/ end=/$/
-" syntax	region	sclStringAssignment	fold keepend extend 
-" 	\	contains=sclProcedureCall,sclAssignOp,@sclStringExpr,
-" 	\		@sclAlwaysValid
-" 	\	start=/\<\a\k*\>\s*[[({]\_.\{-}[])}]\s*\ze:\==\_s*/
-" 	\	skip=/\(:\==\|+\|-\|\<and\>\|\<or\>\|\<after\|\<before\>\)\_s*/
-" 	\	end=/\ze,/ end=/\ze;/ end=/$/
-" syntax	region	sclStringAssignment	fold keepend extend 
-" 	\	contains=sclProcedureCall,sclAssignOp,@sclStringExpr,@sclAlwaysValid
-" 	\	start=/\<substr\>\s*[[({]\_.\{-}[])}]\s*\ze:\==\_s*/
-" 	\	skip=/\(:\==\|+\|-\|\<and\>\|\<or\>\|\<after\|\<before\>\)\_s*/
-" 	\	end=/\ze,/ end=/\ze;/ end=/$/
 
 syntax	region	sclAnonAssignment	fold keepend extend contains=sclIdentifier,
 	\		sclAssignOp,@sclExpr,@sclAlwaysValid
-	\	start=/\<\a\k*\>\s*\ze\<is\>\_s*/
+	\	start=/\<\a\k*\>\s*\<is\>\_s*/
 	\	skip=/\(\<is\>\|+\|-\|\*\|\/\|\<and\>\|\<or\>\|\<after\|\<before\>\|&\)\_s*/
 	\	end=/\ze,/ end=/\ze;/ end=/$/
 syntax	region	sclAnonAssignment	fold keepend extend contains=sclIdentifier,
 	\		sclAssignOp,@sclExpr,@sclAlwaysValid
-	\	start=/\<\a\k*\>\s*\ze:\==\_s*/
+	\	start=/\<\a\k*\>\s*:\==\_s*/
 	\	skip=/\(:\==\|+\|-\|\*\|\/\|\<and\>\|\<or\>\|\<after\|\<before\>\|&\)\_s*/
 	\	end=/\ze,/ end=/\ze;/ end=/$/
 syntax	region	sclAnonAssignment	fold keepend extend 
 	\	contains=sclProcedureCall,sclAssignOp,@sclExpr,@sclAlwaysValid
-	\	start=/\<\a\k*\>\s*[[({]\_.\{-}[])}]\s*\ze:\==\_s*/
+	\	start=/\<\a\k*\>\s*[[({]\_.\{-}[])}]\s*:\==\_s*/
 	\	skip=/\(:\==\|+\|-\|\*\|\/\|\<and\>\|\<or\>\|\<after\|\<before\>\|&\)\_s*/
 	\	end=/\ze,/ end=/\ze;/ end=/$/
 
