@@ -22,10 +22,10 @@ Viml: "
             " ]"
 
     INT
-        DIAG_NONE                   IS 0,
-        DIAG_PATH                   IS 1,
-        DIAG_DATA                   IS 2,
-        DIAG_PERFORMANCE            IS 3,
+@@      DIAG_NONE                   IS 0,
+@@      DIAG_PATH                   IS 1,
+@@      DIAG_DATA                   IS 2,
+@@      DIAG_PERFORMANCE            IS 3,
         DIAG_ALL                    IS 100,
         VERB_NONE                   IS 0,
         VERB_ERRORS                 IS 1,
@@ -46,7 +46,7 @@ Viml: "
         DISPLAY                     := "N"
 
     INT
-        MY_DIAGS                    := DIAG_NONE,
+@@      MY_DIAGS                    := DIAG_NONE,
         MY_VERBOSITY                := VERB_WARNINGS,
         DEFAULT_COMMENT_LEVEL       := VERB_ALL,
         COMMENT_LEVEL               := DEFAULT_COMMENT_LEVEL,
@@ -56,9 +56,9 @@ Viml: "
         VALIDATION_ERRORS           := 0
 
     BOOL
-        TRACE_DATA                  := FALSE,
-        TRACE_PATH                  := FALSE,
-        TRACE_PERFORMANCE           := FALSE,
+@@      TRACE_DATA                  := FALSE,
+@@      TRACE_PATH                  := FALSE,
+@@      TRACE_PERFORMANCE           := FALSE,
         VALIDATION_ERROR            := FALSE,
         VALIDATION_WARNING          := FALSE
 @
